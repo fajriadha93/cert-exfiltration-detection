@@ -1,0 +1,60 @@
+{
+  "framework": "MITRE ATT&CK Enterprise v14",
+  "triage_policy": "Actionable TreeSHAP-to-SIEM Protocol Containment",
+  "rules": [
+    {
+      "feature": "usb_bytes_copied",
+      "mitre_id": "T1052",
+      "mitre_tactic": "Exfiltration Over Physical Medium",
+      "network_or_bus_layer": "USB Mass Storage Bus (SCSI)",
+      "shap_threshold": 0.15,
+      "severity": "CRITICAL",
+      "soar_action": "Enforce endpoint DLP write-block on removable SCSI/USB bus & capture host forensic snapshot"
+    },
+    {
+      "feature": "ext_email_bytes",
+      "mitre_id": "T1567",
+      "mitre_tactic": "Exfiltration Over Web Service",
+      "network_or_bus_layer": "SMTP / MIME Relay (TCP 25/587)",
+      "shap_threshold": 0.12,
+      "severity": "HIGH",
+      "soar_action": "Quarantine outbound message in Mail Transfer Agent (MTA) & trigger automated DLP payload inspection"
+    },
+    {
+      "feature": "http_external_uploads",
+      "mitre_id": "T1041",
+      "mitre_tactic": "Exfiltration Over C2 Channel",
+      "network_or_bus_layer": "HTTP/HTTPS POST (TCP 80/443)",
+      "shap_threshold": 0.1,
+      "severity": "HIGH",
+      "soar_action": "Throttle perimeter proxy session bandwidth & isolate outbound egress socket to uncategorized IP"
+    },
+    {
+      "feature": "sensitive_file_access",
+      "mitre_id": "T1005",
+      "mitre_tactic": "Data from Local System",
+      "network_or_bus_layer": "SMB / NTFS Access Control",
+      "shap_threshold": 0.08,
+      "severity": "MEDIUM",
+      "soar_action": "Enforce step-up Multi-Factor Authentication (MFA) & elevate endpoint audit logging"
+    },
+    {
+      "feature": "usb_connect_count",
+      "mitre_id": "T1091",
+      "mitre_tactic": "Replication Through Removable Media",
+      "network_or_bus_layer": "USB Host Controller Interface",
+      "shap_threshold": 0.07,
+      "severity": "MEDIUM",
+      "soar_action": "Restrict PnP peripheral mounting to hardware-allowlisted device serials"
+    },
+    {
+      "feature": "after_hours_logins",
+      "mitre_id": "T1078",
+      "mitre_tactic": "Valid Accounts",
+      "network_or_bus_layer": "Kerberos / RADIUS / LDAP",
+      "shap_threshold": 0.05,
+      "severity": "LOW",
+      "soar_action": "Correlate off-schedule session token with egress byte velocity in SIEM"
+    }
+  ]
+}

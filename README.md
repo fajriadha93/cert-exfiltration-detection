@@ -56,7 +56,7 @@ See `data/README_DATA.md` for instructions on placing the raw CERT r4.2 CSV file
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/fajriadha/cert-exfiltration-detection.git
+git clone https://github.com/fajriadha93/cert-exfiltration-detection.git
 cd cert-exfiltration-detection
 ```
 
